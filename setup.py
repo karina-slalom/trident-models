@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
   
 setuptools.setup(
     name="trident_models_package",
-    version="0.0.2",
+    version="0.0.3",
     author="Karina",
     author_email="karina.ge@slalom.com",
     packages=["trident_models_package"],

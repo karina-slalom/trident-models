@@ -1,8 +1,6 @@
 from sqlalchemy import String, Boolean, ForeignKey, DateTime
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy.sql import func
 from typing import List
-
 
 class Base(DeclarativeBase):
     pass
@@ -16,7 +14,8 @@ class Tweet(Base):
     tag_id: Mapped[int] = mapped_column(ForeignKey("category_tags.tag_id"))
     content: Mapped[str] = mapped_column(String(100))
     privacy: Mapped[int] = mapped_column(Boolean)
-    created: Mapped[str] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    created: Mapped[str] = mapped_column(DateTime)
+
 
     user: Mapped["User"] = relationship(back_populates="tweets")
     tag: Mapped["Tag"] = relationship("Tag", back_populates="tweets")
